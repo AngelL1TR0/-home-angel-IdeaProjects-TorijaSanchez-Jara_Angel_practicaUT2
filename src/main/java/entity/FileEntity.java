@@ -1,8 +1,6 @@
 package entity;
 
 public class FileEntity {
-
-    private String nombreArchivo;
     private String articulo;
     private String tipo;
     private String fechaDeVenta;
@@ -10,10 +8,6 @@ public class FileEntity {
     private double costeDerivados;
     private double costeProduccion;
     private double impuestos;
-
-    public FileEntity(String nombreArchivo) {
-        this.nombreArchivo = nombreArchivo;
-    }
 
     public FileEntity(String articulo, String tipo, String fechaDeVenta, double precioDeVenta, double costeDerivados, double costeProduccion, double impuestos) {
         this.articulo = articulo;
@@ -25,12 +19,8 @@ public class FileEntity {
         this.impuestos = impuestos;
     }
 
-    public String getNombreArchivo() {
-        return nombreArchivo;
-    }
+    public FileEntity() {
 
-    public void setNombreArchivo(String nombreArchivo) {
-        this.nombreArchivo = nombreArchivo;
     }
 
     public String getArticulo() {

@@ -1,27 +1,35 @@
 package entity;
 
-import java.util.Objects;
-
 public class FileEntity {
+
     private String article;
+
     private String type;
-    private String date;
-    private double sellPrice;
+
+    private String saleDate;
+
+    private double salePrice;
+
     private double derivedCosts;
+
     private double productionCosts;
+
     private double taxes;
 
-    public FileEntity() {
-    }
+    private double benefit;
 
-    public FileEntity(String article, String type, String date, double sellPrice, double derivedCosts, double productionCosts, double taxes) {
+    public FileEntity(String article, String type, String saleDate, double salePrice, double derivedCosts, double productionCosts, double taxes, double benefit) {
         this.article = article;
         this.type = type;
-        this.date = date;
-        this.sellPrice = sellPrice;
+        this.saleDate = saleDate;
+        this.salePrice = salePrice;
         this.derivedCosts = derivedCosts;
         this.productionCosts = productionCosts;
         this.taxes = taxes;
+        this.benefit = benefit;
+    }
+
+    public FileEntity() {
     }
 
     public String getArticle() {
@@ -40,20 +48,20 @@ public class FileEntity {
         this.type = type;
     }
 
-    public String getDate() {
-        return date;
+    public String getSaleDate() {
+        return saleDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setSaleDate(String saleDate) {
+        this.saleDate = saleDate;
     }
 
-    public double getSellPrice() {
-        return sellPrice;
+    public double getSalePrice() {
+        return salePrice;
     }
 
-    public void setSellPrice(double sellPrice) {
-        this.sellPrice = sellPrice;
+    public void setSalePrice(double salePrice) {
+        this.salePrice = salePrice;
     }
 
     public double getDerivedCosts() {
@@ -80,31 +88,25 @@ public class FileEntity {
         this.taxes = taxes;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FileEntity that = (FileEntity) o;
-        return Double.compare(that.sellPrice, sellPrice) == 0 && Double.compare(that.derivedCosts, derivedCosts) == 0 && Double.compare(that.productionCosts, productionCosts) == 0 && Double.compare(that.taxes, taxes) == 0 && Objects.equals(article, that.article) && Objects.equals(type, that.type) && Objects.equals(date, that.date);
+    public double getBenefit() {
+        return benefit;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(article, type, date, sellPrice, derivedCosts, productionCosts, taxes);
+    public void setBenefit(double benefit) {
+        this.benefit = benefit;
     }
 
     @Override
     public String toString() {
-        return "Article{" +
+        return "FileEntity{" +
                 "article='" + article + '\'' +
                 ", type='" + type + '\'' +
-                ", date='" + date + '\'' +
-                ", sellPrice=" + sellPrice +
+                ", saleDate='" + saleDate + '\'' +
+                ", salePrice=" + salePrice +
                 ", derivedCosts=" + derivedCosts +
                 ", productionCosts=" + productionCosts +
                 ", taxes=" + taxes +
+                ", benefit=" + benefit +
                 '}';
     }
-
-
 }

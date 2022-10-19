@@ -4,10 +4,12 @@ import service.ExcellService;
 
 public class Ejercicio1 {
 
-    private static final String PATH = "C:\\Users\\angel\\Downloads\\invoice_202009.csv";
+    private final static String PATH_FACTURA = "src/main/resources/invoice_202009.csv";
+    private final static String PATH_RESULT = "src/main/resources/";
 
     public static void main(String[] args) {
-        ExcellService excellService = new ExcellService();
-        excellService.leeFichero(PATH);
+        ExcellService fileService = new ExcellService();
+        fileService.insertArticlesInFile(PATH_FACTURA, PATH_RESULT);
     }
 }
+

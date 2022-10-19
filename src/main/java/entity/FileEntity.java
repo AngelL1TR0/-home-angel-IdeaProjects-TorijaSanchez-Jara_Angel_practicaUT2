@@ -1,94 +1,110 @@
 package entity;
 
-public class FileEntity {
-    private String articulo;
-    private String tipo;
-    private String fechaDeVenta;
-    private double precioDeVenta;
-    private double costeDerivados;
-    private double costeProduccion;
-    private double impuestos;
+import java.util.Objects;
 
-    public FileEntity(String articulo, String tipo, String fechaDeVenta, double precioDeVenta, double costeDerivados, double costeProduccion, double impuestos) {
-        this.articulo = articulo;
-        this.tipo = tipo;
-        this.fechaDeVenta = fechaDeVenta;
-        this.precioDeVenta = precioDeVenta;
-        this.costeDerivados = costeDerivados;
-        this.costeProduccion = costeProduccion;
-        this.impuestos = impuestos;
-    }
+public class FileEntity {
+    private String article;
+    private String type;
+    private String date;
+    private double sellPrice;
+    private double derivedCosts;
+    private double productionCosts;
+    private double taxes;
 
     public FileEntity() {
-
     }
 
-    public String getArticulo() {
-        return articulo;
+    public FileEntity(String article, String type, String date, double sellPrice, double derivedCosts, double productionCosts, double taxes) {
+        this.article = article;
+        this.type = type;
+        this.date = date;
+        this.sellPrice = sellPrice;
+        this.derivedCosts = derivedCosts;
+        this.productionCosts = productionCosts;
+        this.taxes = taxes;
     }
 
-    public void setArticulo(String articulo) {
-        this.articulo = articulo;
+    public String getArticle() {
+        return article;
     }
 
-    public String getTipo() {
-        return tipo;
+    public void setArticle(String article) {
+        this.article = article;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public String getType() {
+        return type;
     }
 
-    public String getFechaDeVenta() {
-        return fechaDeVenta;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setFechaDeVenta(String fechaDeVenta) {
-        this.fechaDeVenta = fechaDeVenta;
+    public String getDate() {
+        return date;
     }
 
-    public double getPrecioDeVenta() {
-        return precioDeVenta;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setPrecioDeVenta(double precioDeVenta) {
-        this.precioDeVenta = precioDeVenta;
+    public double getSellPrice() {
+        return sellPrice;
     }
 
-    public double getCosteDerivados() {
-        return costeDerivados;
+    public void setSellPrice(double sellPrice) {
+        this.sellPrice = sellPrice;
     }
 
-    public void setCosteDerivados(double costeDerivados) {
-        this.costeDerivados = costeDerivados;
+    public double getDerivedCosts() {
+        return derivedCosts;
     }
 
-    public double getCosteProduccion() {
-        return costeProduccion;
+    public void setDerivedCosts(double derivedCosts) {
+        this.derivedCosts = derivedCosts;
     }
 
-    public void setCosteProduccion(double costeProduccion) {
-        this.costeProduccion = costeProduccion;
+    public double getProductionCosts() {
+        return productionCosts;
     }
 
-    public double getImpuestos() {
-        return impuestos;
+    public void setProductionCosts(double productionCosts) {
+        this.productionCosts = productionCosts;
     }
 
-    public void setImpuestos(double impuestos) {
-        this.impuestos = impuestos;
+    public double getTaxes() {
+        return taxes;
+    }
+
+    public void setTaxes(double taxes) {
+        this.taxes = taxes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FileEntity that = (FileEntity) o;
+        return Double.compare(that.sellPrice, sellPrice) == 0 && Double.compare(that.derivedCosts, derivedCosts) == 0 && Double.compare(that.productionCosts, productionCosts) == 0 && Double.compare(that.taxes, taxes) == 0 && Objects.equals(article, that.article) && Objects.equals(type, that.type) && Objects.equals(date, that.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(article, type, date, sellPrice, derivedCosts, productionCosts, taxes);
     }
 
     @Override
     public String toString() {
-        return "FileEntity{" +
-                "articulo='" + articulo + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", fechaDeVenta='" + fechaDeVenta + '\'' +
-                ", precioDeVenta=" + precioDeVenta +
-                ", costeDerivados=" + costeDerivados +
-                ", costeProduccion=" + costeProduccion +
-                ", impuestos=" + impuestos +
+        return "Article{" +
+                "article='" + article + '\'' +
+                ", type='" + type + '\'' +
+                ", date='" + date + '\'' +
+                ", sellPrice=" + sellPrice +
+                ", derivedCosts=" + derivedCosts +
+                ", productionCosts=" + productionCosts +
+                ", taxes=" + taxes +
                 '}';
     }
+
+
 }

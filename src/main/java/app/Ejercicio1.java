@@ -1,6 +1,7 @@
 package app;
 
 import service.ExcellService;
+import service.FileService;
 
 public class Ejercicio1 {
 
@@ -8,7 +9,7 @@ public class Ejercicio1 {
     private final static String PATH_RESULT = "src/main/resources/";
 
     public static void main(String[] args) {
-        ExcellService fileService = new ExcellService();
+        FileService fileService = new FileService();
         fileService.insertArticlesInFile(PATH_FACTURA, PATH_RESULT);
     }
 }

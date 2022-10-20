@@ -58,12 +58,12 @@ public class FileDaoImpl implements FileDao {
     @Override
     public void writeInResultFile(String invoiceName, int articleAmount, double totalBenefit, String[] splitLine) {
 
-        File finalFile = new File("src/main/resources/result_" + invoiceName);
+        File txtFile = new File("src/main/resources/result_" + invoiceName);
         File csvFile = new File("src/main/resources/invoice_202009.txt");
         String path = csvFile.getPath();
         String csvName = csvFile.getName();
         double csvSize = csvFile.length();
-        try (Writer writer = new FileWriter(finalFile);
+        try (Writer writer = new FileWriter(txtFile);
              BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
             bufferedWriter.write(
                     "Factura: " + invoiceName + '\n' +

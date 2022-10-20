@@ -14,7 +14,7 @@ public class FileService {
     FileDao fileDao = new FileDaoImpl();
 
     FileDao fileDAO = new FileDaoImpl();
-    public void fileSplit(String path) throws IOException {
+    public void showInfo(String path) throws IOException {
 
         String pathResource = "src/main/resources/";
         File file = new File(path);
@@ -36,7 +36,7 @@ public class FileService {
         }
         System.out.println("Fichero " + invoiceName + " generado correctamente en " + pathResource);
     }
-    public void modifyFile(String path) throws IOException {
+    public void makeInvoice(String path) throws IOException {
 
         String pathResource = "src/main/resources/";
         File fileResult = new File(path);
@@ -55,12 +55,11 @@ public class FileService {
             if (splitLine[0].equals("Beneficio")) {
                 totalBenefit += Double.parseDouble(splitLine[1]);
 
-
             }
             BigDecimal formatNumber = new BigDecimal(totalBenefit);
             formatNumber = formatNumber.setScale(2, RoundingMode.DOWN);
             fileDAO.writeInResultFile(invoiceName, articleAmount, formatNumber.doubleValue(), splitLine);
         }
-        System.out.println("Fichero " + "result_" + invoiceName + " generado correctamente en " + pathResource);
+        System.out.println("Fichero " + " result_" + invoiceName + " generado correctamente en " + pathResource);
     }
 }

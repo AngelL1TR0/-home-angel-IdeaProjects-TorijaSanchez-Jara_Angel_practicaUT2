@@ -10,7 +10,7 @@ public class Ejercicio1 {
     public static void main(String[] args) throws IOException {
 
         FileService fileService = new FileService();
-        fileService.fileSplit(PATH);
+        fileService.showInfo(PATH);
 
     }
 }

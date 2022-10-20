@@ -17,5 +17,5 @@ public interface FileDao {
 
     void writeInResultFile(String nombreFactura, int cantidadArticulos, double totalBeneficio, String[] splitLine);
 
-    void createExcelInDisk(Workbook workbook, String path, String pathExerciseTwo) throws IOException;
+    void createExcelInDisk(Workbook workbook, String path, String new_path) throws IOException;
 }

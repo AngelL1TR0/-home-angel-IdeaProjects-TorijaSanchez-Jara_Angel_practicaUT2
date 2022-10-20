@@ -2,111 +2,111 @@ package entity;
 
 public class FileEntity {
 
-    private String article;
+    private String articulo;
 
-    private String type;
+    private String tipo;
 
-    private String saleDate;
+    private String fechaDeVenta;
 
-    private double salePrice;
+    private double precioDeVenta;
 
-    private double derivedCosts;
+    private double costeDerivados;
 
-    private double productionCosts;
+    private double costesProduccion;
 
-    private double taxes;
+    private double impuestos;
 
-    private double benefit;
+    private double beneficio;
 
-    public FileEntity(String article, String type, String saleDate, double salePrice, double derivedCosts, double productionCosts, double taxes, double benefit) {
-        this.article = article;
-        this.type = type;
-        this.saleDate = saleDate;
-        this.salePrice = salePrice;
-        this.derivedCosts = derivedCosts;
-        this.productionCosts = productionCosts;
-        this.taxes = taxes;
-        this.benefit = benefit;
+    public FileEntity(String articulo, String tipo, String fechaDeVenta, double precioDeVenta, double costeDerivados, double costesProduccion, double impuestos, double beneficio) {
+        this.articulo = articulo;
+        this.tipo = tipo;
+        this.fechaDeVenta = fechaDeVenta;
+        this.precioDeVenta = precioDeVenta;
+        this.costeDerivados = costeDerivados;
+        this.costesProduccion = costesProduccion;
+        this.impuestos = impuestos;
+        this.beneficio = beneficio;
     }
 
     public FileEntity() {
     }
 
-    public String getArticle() {
-        return article;
+    public String getArticulo() {
+        return articulo;
     }
 
-    public void setArticle(String article) {
-        this.article = article;
+    public void setArticulo(String articulo) {
+        this.articulo = articulo;
     }
 
-    public String getType() {
-        return type;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public String getSaleDate() {
-        return saleDate;
+    public String getFechaDeVenta() {
+        return fechaDeVenta;
     }
 
-    public void setSaleDate(String saleDate) {
-        this.saleDate = saleDate;
+    public void setFechaDeVenta(String fechaDeVenta) {
+        this.fechaDeVenta = fechaDeVenta;
     }
 
-    public double getSalePrice() {
-        return salePrice;
+    public double getPrecioDeVenta() {
+        return precioDeVenta;
     }
 
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
+    public void setPrecioDeVenta(double precioDeVenta) {
+        this.precioDeVenta = precioDeVenta;
     }
 
-    public double getDerivedCosts() {
-        return derivedCosts;
+    public double getCosteDerivados() {
+        return costeDerivados;
     }
 
-    public void setDerivedCosts(double derivedCosts) {
-        this.derivedCosts = derivedCosts;
+    public void setCosteDerivados(double costeDerivados) {
+        this.costeDerivados = costeDerivados;
     }
 
-    public double getProductionCosts() {
-        return productionCosts;
+    public double getCostesProduccion() {
+        return costesProduccion;
     }
 
-    public void setProductionCosts(double productionCosts) {
-        this.productionCosts = productionCosts;
+    public void setCostesProduccion(double costesProduccion) {
+        this.costesProduccion = costesProduccion;
     }
 
-    public double getTaxes() {
-        return taxes;
+    public double getImpuestos() {
+        return impuestos;
     }
 
-    public void setTaxes(double taxes) {
-        this.taxes = taxes;
+    public void setImpuestos(double impuestos) {
+        this.impuestos = impuestos;
     }
 
-    public double getBenefit() {
-        return benefit;
+    public double getBeneficio() {
+        return beneficio;
     }
 
-    public void setBenefit(double benefit) {
-        this.benefit = benefit;
+    public void setBeneficio(double beneficio) {
+        this.beneficio = beneficio;
     }
 
     @Override
     public String toString() {
         return "FileEntity{" +
-                "article='" + article + '\'' +
-                ", type='" + type + '\'' +
-                ", saleDate='" + saleDate + '\'' +
-                ", salePrice=" + salePrice +
-                ", derivedCosts=" + derivedCosts +
-                ", productionCosts=" + productionCosts +
-                ", taxes=" + taxes +
-                ", benefit=" + benefit +
+                "article='" + articulo + '\'' +
+                ", type='" + tipo + '\'' +
+                ", saleDate='" + fechaDeVenta + '\'' +
+                ", salePrice=" + precioDeVenta +
+                ", derivedCosts=" + costeDerivados +
+                ", productionCosts=" + costesProduccion +
+                ", taxes=" + impuestos +
+                ", benefit=" + beneficio +
                 '}';
     }
 }

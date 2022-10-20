@@ -19,30 +19,17 @@ public class ExcellService {
 
     FileDao fileDao = new FileDaoImpl();
 
-    public void createExcelFile(String path, String pathExerciseTwo) throws IOException {
+    public void createExcell(String path, String new_path) throws IOException {
 
         List<FileEntity> fileEntityList = loadInfo();
 
         try (Workbook workbook = new XSSFWorkbook()) {
-
             Sheet sheet = workbook.createSheet();
-            sheet.setColumnWidth(0, 2800);
-            sheet.setColumnWidth(1, 2800);
-            sheet.setColumnWidth(2, 2800);
-            sheet.setColumnWidth(3, 2800);
-            sheet.setColumnWidth(4, 2800);
-            sheet.setColumnWidth(5, 2800);
-            sheet.setColumnWidth(6, 2800);
-            sheet.setColumnWidth(7, 2800);
-            sheet.setColumnWidth(8, 2800);
-
             createHeader(sheet, workbook.createCellStyle(), workbook.createFont());
             createRows(fileEntityList, sheet, workbook.createCellStyle(), workbook.createFont());
-
-            fileDao.createExcelInDisk(workbook, path, pathExerciseTwo);
-
+            fileDao.createExcelInDisk(workbook, path, new_path);
         } catch (IOException e) {
-            System.err.println("Error en la creacion del workbook: " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
     private List<FileEntity> loadInfo() throws IOException {
@@ -90,25 +77,21 @@ public class ExcellService {
         RichTextString text = new XSSFRichTextString("Articulo");
         cell.setCellValue(text);
         cell.setCellStyle(cellStyle);
-        cell.getRow().setHeight((short) 600);
 
         cell = row.createCell(1);
         text = new XSSFRichTextString("Tipo");
         cell.setCellValue(text);
         cell.setCellStyle(cellStyle);
-        cell.getRow().setHeight((short) 600);
 
         cell = row.createCell(2);
         text = new XSSFRichTextString("Fecha de venta");
         cell.setCellValue(text);
         cell.setCellStyle(cellStyle);
-        cell.getRow().setHeight((short) 600);
 
         cell = row.createCell(3);
         text = new XSSFRichTextString("Precio venta");
         cell.setCellValue(text);
         cell.setCellStyle(cellStyle);
-        cell.getRow().setHeight((short) 600);
 
         cell = row.createCell(4);
         text = new XSSFRichTextString("Costes derivados");
@@ -120,19 +103,17 @@ public class ExcellService {
         text = new XSSFRichTextString("Costes producción");
         cell.setCellValue(text);
         cell.setCellStyle(cellStyle);
-        cell.getRow().setHeight((short) 600);
 
         cell = row.createCell(6);
         text = new XSSFRichTextString("Impuestos");
         cell.setCellValue(text);
         cell.setCellStyle(cellStyle);
-        cell.getRow().setHeight((short) 600);
 
         cell = row.createCell(7);
         text = new XSSFRichTextString("Beneficio");
         cell.setCellValue(text);
         cell.setCellStyle(cellStyle);
-        cell.getRow().setHeight((short) 600);
+
     }
     private void createRows(List<FileEntity> fileEntityList, Sheet sheet, CellStyle cellStyle, Font font) {
 
@@ -149,7 +130,6 @@ public class ExcellService {
         cellStyle.setRightBorderColor(IndexedColors.GREEN.getIndex());
 
         font.setColor(IndexedColors.BLACK.getIndex());
-        font.setBold(false);
         cellStyle.setFont(font);
 
         for (int i = 0; i < fileEntityList.size(); i++) {
@@ -158,55 +138,51 @@ public class ExcellService {
             Row row = sheet.createRow(i + 1);
 
             Cell cell = row.createCell(0);
-            RichTextString text = new XSSFRichTextString(fileEntity.getArticle());
+            RichTextString text = new XSSFRichTextString(fileEntity.getArticulo());
             cell.setCellValue(text);
             cell.setCellStyle(cellStyle);
-            cell.getRow().setHeight((short) 600);
 
             cell = row.createCell(1);
-            text = new XSSFRichTextString(fileEntity.getType());
+            text = new XSSFRichTextString(fileEntity.getTipo());
             cell.setCellValue(text);
             cell.setCellStyle(cellStyle);
-            cell.getRow().setHeight((short) 600);
 
             cell = row.createCell(2);
-            text = new XSSFRichTextString(fileEntity.getSaleDate());
+            text = new XSSFRichTextString(fileEntity.getFechaDeVenta());
             cell.setCellValue(text);
             cell.setCellStyle(cellStyle);
-            cell.getRow().setHeight((short) 600);
 
             cell = row.createCell(3);
-            text = new XSSFRichTextString(String.valueOf(fileEntity.getSalePrice()));
+            text = new XSSFRichTextString(String.valueOf(fileEntity.getPrecioDeVenta()));
             cell.setCellValue(text);
             cell.setCellStyle(cellStyle);
-            cell.getRow().setHeight((short) 600);
 
             cell = row.createCell(4);
-            text = new XSSFRichTextString(String.valueOf(fileEntity.getDerivedCosts()));
+            text = new XSSFRichTextString(String.valueOf(fileEntity.getCosteDerivados()));
             cell.setCellValue(text);
             cell.setCellStyle(cellStyle);
-            cell.getRow().setHeight((short) 600);
 
             cell = row.createCell(5);
-            text = new XSSFRichTextString(String.valueOf(fileEntity.getProductionCosts()));
+            text = new XSSFRichTextString(String.valueOf(fileEntity.getCostesProduccion()));
             cell.setCellValue(text);
             cell.setCellStyle(cellStyle);
-            cell.getRow().setHeight((short) 600);
 
             cell = row.createCell(6);
-            text = new XSSFRichTextString(String.valueOf(fileEntity.getTaxes()));
+            text = new XSSFRichTextString(String.valueOf(fileEntity.getImpuestos()));
             cell.setCellValue(text);
             cell.setCellStyle(cellStyle);
-            cell.getRow().setHeight((short) 600);
 
             cell = row.createCell(7);
-            text = new XSSFRichTextString(String.valueOf(fileEntity.getBenefit()));
+            text = new XSSFRichTextString(String.valueOf(fileEntity.getBeneficio()));
             cell.setCellValue(text);
             cell.setCellStyle(cellStyle);
-            cell.getRow().setHeight((short) 600);
 
-            ConditionalFormattingRule rule1 = sheet.getSheetConditionalFormatting().createConditionalFormattingRule("MOD(ROW() - 1, 2) = 1");
-            PatternFormatting patternFmt = rule1.createPatternFormatting();
+            //En el enunciado no entendia si queria el profesor cada
+            //linea horizantal de un color diferente, asique lo intento
+            //dejar como en la foto del ejercicio.
+
+            ConditionalFormattingRule rule = sheet.getSheetConditionalFormatting().createConditionalFormattingRule("MOD(ROW() - 1, 2) = 1");
+            PatternFormatting patternFmt = rule.createPatternFormatting();
 
             patternFmt.setFillBackgroundColor(IndexedColors.LIGHT_GREEN.getIndex());
             patternFmt.setFillPattern(PatternFormatting.SOLID_FOREGROUND);
@@ -215,7 +191,7 @@ public class ExcellService {
                     CellRangeAddress.valueOf("A1:H" + fileEntityList.size())
             };
 
-            sheet.getSheetConditionalFormatting().addConditionalFormatting(regions, rule1);
+            sheet.getSheetConditionalFormatting().addConditionalFormatting(regions, rule);
         }
     }
 }
